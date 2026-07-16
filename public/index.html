@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Upload your vibe-coding desktop and receive a scientifically unserious LARPer score." />
+    <meta name="theme-color" content="#080a0c" />
+    <title>LARPmaxxing — Desktop vibe audit</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="LARPmaxxing home">
+        <span class="wordmark-mark" aria-hidden="true">⌁</span>
+        <span>LARP<span>MAXXING</span></span>
+      </a>
+      <div class="header-status">
+        <span class="status-light" aria-hidden="true"></span>
+        <span id="mode-label">Establishing uplink</span>
+      </div>
+      <a class="header-link" href="#method">How guilt is calculated ↓</a>
+    </header>
+
+    <main>
+      <section class="hero-shell" aria-labelledby="hero-title">
+        <div class="hero-main">
+          <div class="hero-copy">
+            <p class="kicker">Bay Area builder forensics / case 001</p>
+            <h1 id="hero-title">Your desktop<br />is <em>testimony.</em></h1>
+            <p class="hero-deck">
+              Submit your vibe-coding command center. Our vision model will inventory the agents,
+              terminals, dashboards, and ceremonial infrastructure—then quantify the LARP.
+            </p>
+          </div>
+
+          <div class="audit-card" id="audit-card">
+            <form id="audit-form" novalidate>
+              <div class="evidence-header">
+                <div>
+                  <p class="utility-label">Exhibit A</p>
+                  <h2>Desktop capture</h2>
+                </div>
+                <p class="evidence-number">LMX–<span id="case-number">000000</span></p>
+              </div>
+
+              <label class="drop-zone" id="drop-zone" for="screenshot">
+                <input id="screenshot" name="screenshot" type="file" accept="image/png,image/jpeg,image/webp" />
+                <span class="corner corner-tl" aria-hidden="true"></span>
+                <span class="corner corner-tr" aria-hidden="true"></span>
+                <span class="corner corner-bl" aria-hidden="true"></span>
+                <span class="corner corner-br" aria-hidden="true"></span>
+                <span class="drop-idle" id="drop-idle">
+                  <span class="upload-glyph" aria-hidden="true">↥</span>
+                  <strong>Drop the evidence</strong>
+                  <span>or choose a PNG, JPG, or WebP · max 6 MB</span>
+                </span>
+                <span class="preview-wrap" id="preview-wrap" hidden>
+                  <img id="preview" alt="Selected desktop screenshot preview" />
+                  <span class="scan-line" aria-hidden="true"></span>
+                  <span class="preview-caption" id="preview-caption"></span>
+                </span>
+              </label>
+
+              <div class="identity-grid">
+                <label>
+                  <span>Display name <small>optional</small></span>
+                  <input id="display-name" maxlength="32" autocomplete="nickname" placeholder="Terminally Online" />
+                </label>
+                <label>
+                  <span>X handle <small>optional</small></span>
+                  <div class="input-prefix"><b>@</b><input id="x-handle" maxlength="16" autocomplete="off" placeholder="vibecoder" /></div>
+                </label>
+              </div>
+
+              <label class="check-row">
+                <input id="publish" type="checkbox" checked />
+                <span class="fake-check" aria-hidden="true"></span>
+                <span>Enter my score on the public leaderboard <small>(the image is never published)</small></span>
+              </label>
+
+              <label class="check-row consent-row">
+                <input id="consent" type="checkbox" />
+                <span class="fake-check" aria-hidden="true"></span>
+                <span>I have removed secrets and agree to send this image to the configured vision provider.</span>
+              </label>
+
+              <button class="audit-button" id="audit-button" type="submit">
+                <span>Calculate my LARPer score</span><b aria-hidden="true">→</b>
+              </button>
+              <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+            </form>
+
+            <section class="result" id="result" hidden aria-live="polite">
+              <div class="result-topline">
+                <p class="utility-label">Audit complete</p>
+                <button class="text-button" id="reset-button" type="button">Audit another ↻</button>
+              </div>
+              <div class="score-lockup">
+                <div class="score-dial" aria-label="LARPer score">
+                  <span id="score-value">00</span><small>/100</small>
+                </div>
+                <div class="verdict-lockup">
+                  <span class="rank-code" id="rank-code">L0</span>
+                  <h2 id="rank-name">Pending indictment</h2>
+                  <p id="model-verdict"></p>
+                </div>
+              </div>
+              <blockquote id="roast"></blockquote>
+              <div class="evidence-list" id="evidence-list"></div>
+              <div class="breakdown" id="breakdown"></div>
+              <div class="result-actions">
+                <button class="share-button" id="share-button" type="button">Share the indictment</button>
+                <a class="x-button" id="x-button" href="#" target="_blank" rel="noopener noreferrer">Post to X ↗</a>
+              </div>
+              <p class="model-note" id="model-note"></p>
+            </section>
+          </div>
+        </div>
+
+        <aside class="leaderboard" aria-labelledby="leaderboard-title">
+          <div class="leaderboard-heading">
+            <div>
+              <p class="utility-label">Public record</p>
+              <h2 id="leaderboard-title">Top offenders</h2>
+            </div>
+            <span class="live-chip">Live</span>
+          </div>
+          <ol id="leaderboard-list" class="leaderboard-list" aria-live="polite">
+            <li class="leaderboard-empty">Loading the docket…</li>
+          </ol>
+          <p class="leaderboard-note">Scores are satire. Images are discarded after analysis and never appear here.</p>
+        </aside>
+      </section>
+
+      <section class="method" id="method" aria-labelledby="method-title">
+        <div class="method-intro">
+          <p class="kicker">The LARPer metric™</p>
+          <h2 id="method-title">Six counts of<br />aggravated <em>vibing.</em></h2>
+          <p>
+            High scores reward glorious redundancy, theatrical complexity, and tooling that takes longer to explain than the product itself.
+          </p>
+        </div>
+        <div class="metric-list" id="metric-list"></div>
+      </section>
+
+      <section class="privacy-strip" aria-label="Privacy note">
+        <p><span>Before you upload</span> Close DMs. Blur credentials. Hide client work. If it should not leave your machine, do not submit it.</p>
+        <a href="/privacy.html">Read the plain-English privacy note →</a>
+      </section>
+    </main>
+
+    <footer>
+      <p>LARPmaxxing is an affectionate satire, not a measure of engineering ability.</p>
+      <p>Built with an irresponsible number of panes · <span id="year"></span></p>
+    </footer>
+  </body>
+</html>

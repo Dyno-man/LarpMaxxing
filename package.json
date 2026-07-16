@@ -1,0 +1,20 @@
+{
+  "name": "larpmaxxing",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A forensic desktop-vibe audit for terminally online builders.",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "dev": "node --watch server.mjs",
+    "start": "node server.mjs",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "helmet": "^8.1.0"
+  }
+}
