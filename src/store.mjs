@@ -1,6 +1,7 @@
 import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
+import { SCORE_BANDS } from "./metric.mjs";
 
 export class LeaderboardStore {
   constructor(dataDir) {
@@ -21,7 +22,11 @@ export class LeaderboardStore {
     const entries = await this.#read();
     return entries
       .sort((a, b) => b.score - a.score || new Date(a.createdAt) - new Date(b.createdAt))
-      .slice(0, limit);
+      .slice(0, limit)
+      .map((entry) => ({
+        ...entry,
+        band: SCORE_BANDS.find((band) => entry.score >= band.min)?.name || entry.band
+      }));
   }
 
   async add({ displayName, xHandle, assessment, mode }) {

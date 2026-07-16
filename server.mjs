@@ -45,7 +45,6 @@ const scoringLimiter = rateLimit({
 app.get("/api/config", (_request, response) => {
   response.json({
     mode: hasApiKey ? "live" : "demo",
-    model: hasApiKey ? model : "demo-simulator",
     maxImageBytes: 6 * 1024 * 1024,
     rubric: RUBRIC,
     bands: SCORE_BANDS
@@ -77,7 +76,8 @@ app.post("/api/score", scoringLimiter, async (request, response) => {
       : null;
 
     response.json({
-      ...result,
+      assessment: result.assessment,
+      mode: result.mode,
       entry,
       publicationSkipped: input.publish && result.mode !== "live"
     });

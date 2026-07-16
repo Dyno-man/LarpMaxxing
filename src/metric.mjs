@@ -1,48 +1,48 @@
 export const RUBRIC = [
   {
-    key: "toolDensity",
-    label: "Tool density",
-    max: 25,
-    description: "Editors, terminals, AI panes, dashboards, and tiny apps competing for oxygen."
+    key: "agentMultiplication",
+    label: "Agent multiplication",
+    max: 30,
+    description: "How many Codex, Claude Code, Cursor, OMP, or other agent sessions are visibly working the same shift."
   },
   {
-    key: "agenticExcess",
-    label: "Agentic excess",
+    key: "toolSprawl",
+    label: "Tool sprawl",
     max: 20,
-    description: "Multiple copilots, agents, MCPs, orchestration layers, and suspiciously autonomous tabs."
+    description: "Editors, copilots, dashboards, browsers, MCP tools, and niche apps stacked beyond practical need."
   },
   {
-    key: "terminalTheater",
-    label: "Terminal theater",
+    key: "terminalPageantry",
+    label: "Terminal pageantry",
     max: 15,
-    description: "Split panes, streaming logs, custom prompts, tmux grids, and commands nobody needed to see."
+    description: "Split panes, tmux grids, streaming logs, custom prompts, and terminal acreage."
   },
   {
-    key: "visualOverkill",
-    label: "Visual overkill",
-    max: 15,
-    description: "Needlessly cinematic themes, transparent windows, widgets, wallpapers, and RGB mood."
+    key: "workflowCeremony",
+    label: "Workflow ceremony",
+    max: 20,
+    description: "The visible distance between having an idea and letting a human change one line of code."
   },
   {
-    key: "hardwarePosturing",
-    label: "Hardware posturing",
+    key: "aestheticSignaling",
+    label: "Aesthetic signaling",
     max: 10,
-    description: "Ultrawide real estate, extra displays, niche peripherals, and conspicuous compute."
+    description: "Themes, widgets, transparency, status panes, and visual proof that this is a whole lifestyle."
   },
   {
-    key: "ritualComplexity",
-    label: "Ritual complexity",
-    max: 15,
-    description: "The distance between having an idea and actually changing a line of code."
+    key: "hardwareStaging",
+    label: "Hardware staging",
+    max: 5,
+    description: "Ultrawides and extra displays. Worth a few points, never enough to carry the bit."
   }
 ];
 
 export const SCORE_BANDS = [
-  { min: 90, name: "Founding LARPer", code: "L5", verdict: "No discernible boundary remains between shipping and performance art." },
-  { min: 75, name: "Series A Sorcerer", code: "L4", verdict: "The workflow has become the product." },
-  { min: 55, name: "Agent Wrangler", code: "L3", verdict: "You could still close some tabs. You will not." },
-  { min: 35, name: "Vibe Apprentice", code: "L2", verdict: "Promising levels of unnecessary infrastructure." },
-  { min: 0, name: "Civilian Engineer", code: "L1", verdict: "Disturbingly normal. Consider installing three more terminals." }
+  { min: 90, name: "Full-time LARPer", code: "D5", verdict: "You are managing a small consultancy made entirely of terminals." },
+  { min: 75, name: "Agent Middle Manager", code: "D4", verdict: "You opened enough agents to need an org chart." },
+  { min: 60, name: "Workflow Influencer", code: "D3", verdict: "There is visibly more process than product here." },
+  { min: 40, name: "One-tab Warrior", code: "D2", verdict: "One agent, one dream, completely normal by current standards." },
+  { min: 0, name: "Actually Shipping", code: "D1", verdict: "Almost no visible LARP. Concerningly efficient." }
 ];
 
 export function clampScore(value, max) {
@@ -65,7 +65,7 @@ export function normalizeAssessment(raw = {}) {
     score,
     breakdown,
     band,
-    roast: cleanText(raw.roast, "An immaculate setup with a concerning amount of ceremony.", 280),
+    roast: cleanText(raw.roast, "Clean setup. You may be at risk of finishing the feature.", 240),
     evidence,
     modelVerdict: cleanText(raw.modelVerdict, band.verdict, 180)
   };

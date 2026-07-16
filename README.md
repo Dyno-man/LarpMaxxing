@@ -1,6 +1,6 @@
 # LARPmaxxing
 
-A deliberately unserious desktop-vibe audit. Upload a screenshot of your coding setup, let a vision model identify the visible ceremony, and receive a shareable LARPer score plus a spot on the leaderboard.
+A deliberately unserious desktop-vibe audit in the Dino's Essentials design system. Upload a screenshot of your coding setup, let a vision model count the visible agents and tooling, and receive a shareable LARPer score plus a spot on the leaderboard.
 
 The app is a small Node service with a no-build frontend. It uses OpenRouter for live image analysis and a JSON file for leaderboard persistence, which makes it easy to run on a single VPS.
 
@@ -43,18 +43,18 @@ APP_URL=http://localhost:3000
 
 | Count | Category | Max | What scores points |
 | --- | --- | ---: | --- |
-| 01 | Tool density | 25 | Editors, terminals, AI panes, and dashboards competing for oxygen |
-| 02 | Agentic excess | 20 | Multiple copilots, MCPs, agents, and orchestration layers |
-| 03 | Terminal theater | 15 | Split panes, logs, custom prompts, and tmux grids |
-| 04 | Visual overkill | 15 | Cinematic themes, widgets, transparency, wallpapers, and RGB mood |
-| 05 | Hardware posturing | 10 | Ultrawides, extra displays, niche peripherals, and conspicuous compute |
-| 06 | Ritual complexity | 15 | Distance between having an idea and changing a line of code |
+| 01 | Agent multiplication | 30 | Multiple visibly active Codex, Claude Code, Cursor, OMP, or other agent sessions |
+| 02 | Tool sprawl | 20 | Editors, copilots, dashboards, browsers, MCP tools, and niche supporting apps |
+| 03 | Terminal pageantry | 15 | Split panes, logs, custom prompts, and tmux grids |
+| 04 | Workflow ceremony | 20 | Distance between having an idea and letting a human change one line of code |
+| 05 | Aesthetic signaling | 10 | Themes, widgets, transparency, status panes, and desktop lifestyle branding |
+| 06 | Hardware staging | 5 | Ultrawides and extra displays; never enough to carry a score alone |
 
-The server recalculates the total from clamped component scores instead of trusting a model-provided total. The prompt forbids guessing sensitive personal traits and tells the model not to repeat visible secrets or private text.
+The server recalculates the total from clamped component scores instead of trusting a model-provided total. Prompt anchors put one ordinary agent session around 40–55 and reserve 90+ for four or more clearly active agents/CLIs with redundant supporting infrastructure. The prompt forbids guessing sensitive personal traits and tells the model not to repeat visible secrets or private text.
 
 ## VPS deployment
 
-1. Point the chosen dyno-domain DNS record at the VPS.
+1. Point the chosen Dino Essentials DNS record at the VPS.
 2. Clone this repository on the VPS.
 3. Copy `.env.example` to `.env` and set `OPENROUTER_API_KEY`, `APP_URL`, and any non-default options.
 4. Start the app:

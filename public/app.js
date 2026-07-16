@@ -57,15 +57,14 @@ function wireEvents() {
 
 function renderConfig() {
   const isLive = state.config.mode === "live";
-  elements.modeLabel.textContent = isLive ? "Vision uplink active" : "Demo simulator active";
+  elements.modeLabel.textContent = isLive ? "Live scoring" : "Demo scoring";
   document.body.dataset.mode = state.config.mode;
 
   const metricList = $("#metric-list");
-  metricList.innerHTML = state.config.rubric.map((item, index) => `
-    <article class="metric-row">
-      <span class="metric-index">${String(index + 1).padStart(2, "0")}</span>
-      <div><h3>${escapeHtml(item.label)}</h3><p>${escapeHtml(item.description)}</p></div>
-      <strong>${item.max}<small> pts</small></strong>
+  metricList.innerHTML = state.config.rubric.map((item) => `
+    <article class="metric-card">
+      <div><h3>${escapeHtml(item.label)}</h3><strong>${item.max}<small> pts</small></strong></div>
+      <p>${escapeHtml(item.description)}</p>
     </article>
   `).join("");
 }
@@ -134,7 +133,7 @@ function renderResult(payload) {
   const { assessment } = payload;
   elements.form.hidden = true;
   elements.result.hidden = false;
-  $("#score-value").textContent = String(assessment.score).padStart(2, "0");
+  $("#score-value").textContent = "0";
   $("#rank-code").textContent = assessment.band.code;
   $("#rank-name").textContent = assessment.band.name;
   $("#model-verdict").textContent = assessment.modelVerdict;
@@ -146,17 +145,47 @@ function renderResult(payload) {
     return `
       <div class="breakdown-row">
         <span>${escapeHtml(item.label)}</span>
-        <div class="meter"><i style="--value:${percent}%"></i></div>
+        <div class="meter" aria-hidden="true"><i data-target="${percent}"></i></div>
         <strong>${value}<small>/${item.max}</small></strong>
       </div>`;
   }).join("");
   $("#model-note").textContent = payload.mode === "demo"
-    ? "SIMULATED AUDIT · Demo scores stay off the leaderboard · Set OPENROUTER_API_KEY for real visual analysis."
-    : `VISUAL AUDIT · ${payload.model}`;
+    ? "Demo score only. Add a live key before you flex it. Demo scores stay off the leaderboard."
+    : "Scored from this screenshot. The image is not saved or shown publicly.";
 
   const shareText = buildShareText(assessment);
   $("#x-button").href = `https://twitter.com/intent/tweet?${new URLSearchParams({ text: shareText, url: location.origin })}`;
+  animateResult(assessment.score);
   elements.result.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+function animateResult(targetScore) {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const scoreNode = $("#score-value");
+  const bars = Array.from(document.querySelectorAll(".meter i"));
+
+  requestAnimationFrame(() => {
+    bars.forEach((bar, index) => {
+      const apply = () => { bar.style.width = `${bar.dataset.target}%`; };
+      if (reducedMotion) apply();
+      else setTimeout(apply, 140 + index * 90);
+    });
+  });
+
+  if (reducedMotion) {
+    scoreNode.textContent = String(targetScore);
+    return;
+  }
+
+  const duration = 900;
+  const startedAt = performance.now();
+  const tick = (now) => {
+    const progress = Math.min(1, (now - startedAt) / duration);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    scoreNode.textContent = String(Math.round(targetScore * eased));
+    if (progress < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
 }
 
 function resetAudit() {
@@ -189,12 +218,12 @@ async function shareResult() {
   }
   await navigator.clipboard.writeText(`${text} ${location.origin}`);
   const button = $("#share-button");
-  button.textContent = "Indictment copied ✓";
-  setTimeout(() => { button.textContent = "Share the indictment"; }, 1800);
+  button.textContent = "Score copied ✓";
+  setTimeout(() => { button.textContent = "Copy my score"; }, 1800);
 }
 
 function buildShareText(assessment) {
-  return `My desktop scored ${assessment.score}/100 on the LARPmaxxing audit: ${assessment.band.name}. The workflow may have become the product.`;
+  return `My desktop scored ${assessment.score}/100 on LARPmaxxing. Official diagnosis: ${assessment.band.name}.`;
 }
 
 async function loadLeaderboard(highlightId) {
@@ -203,7 +232,7 @@ async function loadLeaderboard(highlightId) {
     const { entries } = await response.json();
     const list = $("#leaderboard-list");
     if (!entries.length) {
-      list.innerHTML = `<li class="leaderboard-empty"><strong>No priors on record.</strong><span>Be the first to submit evidence.</span></li>`;
+      list.innerHTML = `<li class="leaderboard-empty"><strong>Nobody has embarrassed themselves yet.</strong><span>You could change that.</span></li>`;
       return;
     }
     list.innerHTML = entries.map((entry, index) => {
@@ -218,14 +247,14 @@ async function loadLeaderboard(highlightId) {
         </li>`;
     }).join("");
   } catch {
-    $("#leaderboard-list").innerHTML = `<li class="leaderboard-empty">The public record is temporarily sealed.</li>`;
+    $("#leaderboard-list").innerHTML = `<li class="leaderboard-empty">The leaderboard is taking a little walk.</li>`;
   }
 }
 
 function setLoading(loading) {
   elements.button.disabled = loading;
   elements.button.classList.toggle("loading", loading);
-  elements.button.querySelector("span").textContent = loading ? "Scanning for ceremonial complexity…" : "Calculate my LARPer score";
+  elements.button.querySelector("span").textContent = loading ? "Counting your agents…" : "Rate my LARP";
   elements.dropZone.classList.toggle("scanning", loading);
 }
 

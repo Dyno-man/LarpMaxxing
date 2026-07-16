@@ -1,4 +1,4 @@
-larp.your-dyno-domain.com {
+larp.dinosessentials.xyz {
   encode zstd gzip
   reverse_proxy 127.0.0.1:3000
 

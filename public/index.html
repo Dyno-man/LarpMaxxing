@@ -3,157 +3,188 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Upload your vibe-coding desktop and receive a scientifically unserious LARPer score." />
-    <meta name="theme-color" content="#080a0c" />
-    <title>LARPmaxxing — Desktop vibe audit</title>
+    <meta name="description" content="Drop your vibe-coding desktop and find out how hard you are LARPing." />
+    <meta name="theme-color" content="#f4f7f1" />
+    <title>LARPmaxxing — A Dino's Essentials experiment</title>
     <link rel="stylesheet" href="/styles.css" />
     <script src="/app.js" defer></script>
   </head>
   <body>
-    <div class="noise" aria-hidden="true"></div>
     <header class="site-header">
       <a class="wordmark" href="/" aria-label="LARPmaxxing home">
-        <span class="wordmark-mark" aria-hidden="true">⌁</span>
-        <span>LARP<span>MAXXING</span></span>
+        <img src="/dino-logo.png" alt="" />
+        <span><strong>Dino's Essentials</strong><small>LARPmaxxing</small></span>
       </a>
-      <div class="header-status">
-        <span class="status-light" aria-hidden="true"></span>
-        <span id="mode-label">Establishing uplink</span>
+      <div class="header-actions">
+        <div class="header-status">
+          <span class="status-light" aria-hidden="true"></span>
+          <span id="mode-label">Checking scorer</span>
+        </div>
+        <a class="header-link" href="#method">How scoring works</a>
       </div>
-      <a class="header-link" href="#method">How guilt is calculated ↓</a>
     </header>
 
     <main>
-      <section class="hero-shell" aria-labelledby="hero-title">
-        <div class="hero-main">
-          <div class="hero-copy">
-            <p class="kicker">Bay Area builder forensics / case 001</p>
-            <h1 id="hero-title">Your desktop<br />is <em>testimony.</em></h1>
-            <p class="hero-deck">
-              Submit your vibe-coding command center. Our vision model will inventory the agents,
-              terminals, dashboards, and ceremonial infrastructure—then quantify the LARP.
-            </p>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="kicker">Dino's Essentials / terminal behavior</p>
+          <h1 id="hero-title">Show us the stack.<br /><em>We’ll tell you how cooked you are.</em></h1>
+          <p class="hero-deck">
+            Drop a screenshot of your vibe-coding setup. We count the agents, terminals, dashboards,
+            and supporting cast—then score how committed you are to the bit.
+          </p>
+          <a class="primary-link" href="#audit-card">Rate my desktop <span>↓</span></a>
+        </div>
+
+        <div class="calibration-card" aria-label="Example score calibration">
+          <div class="calibration-head">
+            <div><p class="utility-label">Rough calibration</p><h2>What counts as LARP?</h2></div>
+            <img src="/dino-logo.png" alt="" />
           </div>
+          <div class="calibration-row">
+            <div><strong>One Codex window</strong><span>Baseline aura</span></div><b>≈ 50</b>
+          </div>
+          <div class="calibration-row">
+            <div><strong>Two agents + tmux</strong><span>Now we’re dressing up</span></div><b>≈ 68</b>
+          </div>
+          <div class="calibration-row calibration-row-hot">
+            <div><strong>Four CLIs + dashboards</strong><span>Committed to the bit</span></div><b>≈ 90</b>
+          </div>
+          <p class="calibration-note">Wallpaper cannot save you. Visible redundant work can.</p>
+        </div>
+      </section>
 
-          <div class="audit-card" id="audit-card">
-            <form id="audit-form" novalidate>
-              <div class="evidence-header">
-                <div>
-                  <p class="utility-label">Exhibit A</p>
-                  <h2>Desktop capture</h2>
-                </div>
-                <p class="evidence-number">LMX–<span id="case-number">000000</span></p>
+      <section class="app-grid" aria-label="Desktop scoring app">
+        <div class="audit-card" id="audit-card">
+          <form id="audit-form" novalidate>
+            <div class="card-heading">
+              <div>
+                <p class="utility-label">Your setup</p>
+                <h2>Drop the desktop.</h2>
+                <p>One full screenshot is better than a suspiciously tasteful crop.</p>
               </div>
+              <span class="case-number">LMX–<span id="case-number">000000</span></span>
+            </div>
 
-              <label class="drop-zone" id="drop-zone" for="screenshot">
-                <input id="screenshot" name="screenshot" type="file" accept="image/png,image/jpeg,image/webp" />
-                <span class="corner corner-tl" aria-hidden="true"></span>
-                <span class="corner corner-tr" aria-hidden="true"></span>
-                <span class="corner corner-bl" aria-hidden="true"></span>
-                <span class="corner corner-br" aria-hidden="true"></span>
-                <span class="drop-idle" id="drop-idle">
-                  <span class="upload-glyph" aria-hidden="true">↥</span>
-                  <strong>Drop the evidence</strong>
-                  <span>or choose a PNG, JPG, or WebP · max 6 MB</span>
-                </span>
-                <span class="preview-wrap" id="preview-wrap" hidden>
-                  <img id="preview" alt="Selected desktop screenshot preview" />
-                  <span class="scan-line" aria-hidden="true"></span>
-                  <span class="preview-caption" id="preview-caption"></span>
-                </span>
+            <label class="drop-zone" id="drop-zone" for="screenshot">
+              <input id="screenshot" name="screenshot" type="file" accept="image/png,image/jpeg,image/webp" />
+              <span class="drop-idle" id="drop-idle">
+                <span class="upload-glyph" aria-hidden="true">↑</span>
+                <strong>Drop your setup here</strong>
+                <span>or choose a PNG, JPG, or WebP · max 6 MB</span>
+              </span>
+              <span class="preview-wrap" id="preview-wrap" hidden>
+                <img id="preview" alt="Selected desktop screenshot preview" />
+                <span class="scan-line" aria-hidden="true"></span>
+                <span class="preview-caption" id="preview-caption"></span>
+              </span>
+            </label>
+
+            <div class="identity-grid">
+              <label>
+                <span>Display name <small>optional</small></span>
+                <input id="display-name" maxlength="32" autocomplete="nickname" placeholder="Terminally Online" />
               </label>
+              <label>
+                <span>X handle <small>optional</small></span>
+                <div class="input-prefix"><b>@</b><input id="x-handle" maxlength="16" autocomplete="off" placeholder="vibecoder" /></div>
+              </label>
+            </div>
 
-              <div class="identity-grid">
-                <label>
-                  <span>Display name <small>optional</small></span>
-                  <input id="display-name" maxlength="32" autocomplete="nickname" placeholder="Terminally Online" />
-                </label>
-                <label>
-                  <span>X handle <small>optional</small></span>
-                  <div class="input-prefix"><b>@</b><input id="x-handle" maxlength="16" autocomplete="off" placeholder="vibecoder" /></div>
-                </label>
-              </div>
-
+            <div class="checks">
               <label class="check-row">
                 <input id="publish" type="checkbox" checked />
                 <span class="fake-check" aria-hidden="true"></span>
-                <span>Enter my score on the public leaderboard <small>(the image is never published)</small></span>
+                <span>Put my score on the leaderboard <small>(the screenshot stays private)</small></span>
               </label>
 
               <label class="check-row consent-row">
                 <input id="consent" type="checkbox" />
                 <span class="fake-check" aria-hidden="true"></span>
-                <span>I have removed secrets and agree to send this image to the configured vision provider.</span>
+                <span>I removed secrets and agree to send this image for visual scoring.</span>
               </label>
+            </div>
 
-              <button class="audit-button" id="audit-button" type="submit">
-                <span>Calculate my LARPer score</span><b aria-hidden="true">→</b>
-              </button>
-              <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
-            </form>
+            <button class="audit-button" id="audit-button" type="submit">
+              <span>Rate my LARP</span><b aria-hidden="true">→</b>
+            </button>
+            <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+          </form>
 
-            <section class="result" id="result" hidden aria-live="polite">
-              <div class="result-topline">
-                <p class="utility-label">Audit complete</p>
-                <button class="text-button" id="reset-button" type="button">Audit another ↻</button>
+          <section class="result" id="result" hidden aria-live="polite">
+            <div class="receipt-teeth" aria-hidden="true"></div>
+            <div class="result-topline">
+              <div><p class="utility-label">Dino's Essentials</p><h2>Your LARP receipt</h2></div>
+              <button class="text-button" id="reset-button" type="button">Rate another</button>
+            </div>
+
+            <div class="score-lockup">
+              <div class="score-dial" aria-label="LARPer score">
+                <span id="score-value">0</span><small>/100</small>
               </div>
-              <div class="score-lockup">
-                <div class="score-dial" aria-label="LARPer score">
-                  <span id="score-value">00</span><small>/100</small>
-                </div>
-                <div class="verdict-lockup">
-                  <span class="rank-code" id="rank-code">L0</span>
-                  <h2 id="rank-name">Pending indictment</h2>
-                  <p id="model-verdict"></p>
-                </div>
+              <div class="verdict-lockup">
+                <span class="rank-code" id="rank-code">D0</span>
+                <h2 id="rank-name">Calculating aura</h2>
+                <p id="model-verdict"></p>
               </div>
-              <blockquote id="roast"></blockquote>
+            </div>
+
+            <blockquote id="roast"></blockquote>
+
+            <div class="result-section">
+              <p class="utility-label">What gave it away</p>
               <div class="evidence-list" id="evidence-list"></div>
+            </div>
+
+            <div class="result-section">
+              <p class="utility-label">Where the points came from</p>
               <div class="breakdown" id="breakdown"></div>
-              <div class="result-actions">
-                <button class="share-button" id="share-button" type="button">Share the indictment</button>
-                <a class="x-button" id="x-button" href="#" target="_blank" rel="noopener noreferrer">Post to X ↗</a>
-              </div>
-              <p class="model-note" id="model-note"></p>
-            </section>
-          </div>
+            </div>
+
+            <div class="result-actions">
+              <button class="share-button" id="share-button" type="button">Copy my score</button>
+              <a class="x-button" id="x-button" href="#" target="_blank" rel="noopener noreferrer">Post to X ↗</a>
+            </div>
+            <p class="model-note" id="model-note"></p>
+          </section>
         </div>
 
         <aside class="leaderboard" aria-labelledby="leaderboard-title">
           <div class="leaderboard-heading">
             <div>
-              <p class="utility-label">Public record</p>
-              <h2 id="leaderboard-title">Top offenders</h2>
+              <p class="utility-label">Public leaderboard</p>
+              <h2 id="leaderboard-title">Most committed to the bit</h2>
             </div>
             <span class="live-chip">Live</span>
           </div>
           <ol id="leaderboard-list" class="leaderboard-list" aria-live="polite">
-            <li class="leaderboard-empty">Loading the docket…</li>
+            <li class="leaderboard-empty">Loading the hall of LARP…</li>
           </ol>
-          <p class="leaderboard-note">Scores are satire. Images are discarded after analysis and never appear here.</p>
+          <p class="leaderboard-note">Only the score and profile appear here. Screenshots are discarded after scoring.</p>
         </aside>
       </section>
 
       <section class="method" id="method" aria-labelledby="method-title">
         <div class="method-intro">
-          <p class="kicker">The LARPer metric™</p>
-          <h2 id="method-title">Six counts of<br />aggravated <em>vibing.</em></h2>
+          <p class="kicker">Scoring, minus the vibes</p>
+          <h2 id="method-title">What actually moves the number.</h2>
           <p>
-            High scores reward glorious redundancy, theatrical complexity, and tooling that takes longer to explain than the product itself.
+            Redundant agents matter most. Hardware and a cute theme get a few points. Four terminals doing the job of one gets the respect it deserves.
           </p>
         </div>
         <div class="metric-list" id="metric-list"></div>
       </section>
 
       <section class="privacy-strip" aria-label="Privacy note">
-        <p><span>Before you upload</span> Close DMs. Blur credentials. Hide client work. If it should not leave your machine, do not submit it.</p>
-        <a href="/privacy.html">Read the plain-English privacy note →</a>
+        <img src="/dino-logo.png" alt="" />
+        <p><strong>Do a secrets check.</strong> Close DMs, blur credentials, and hide client work before you upload.</p>
+        <a href="/privacy.html">Privacy note →</a>
       </section>
     </main>
 
     <footer>
-      <p>LARPmaxxing is an affectionate satire, not a measure of engineering ability.</p>
-      <p>Built with an irresponsible number of panes · <span id="year"></span></p>
+      <a class="footer-brand" href="/"><img src="/dino-logo.png" alt="" /><span>Dino's Essentials</span></a>
+      <p>LARPmaxxing measures visible commitment to the bit, not engineering ability · <span id="year"></span></p>
     </footer>
   </body>
 </html>

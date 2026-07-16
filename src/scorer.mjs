@@ -100,20 +100,30 @@ export class ScoringError extends Error {
   }
 }
 
-function buildSystemPrompt() {
+export function buildSystemPrompt() {
   const rubric = RUBRIC.map((item) => `- ${item.key}: 0-${item.max}. ${item.description}`).join("\n");
-  return `You are the LARPmaxxing forensic auditor: funny, dry, observant, and never cruel. Score how theatrically over-engineered a person's vibe-coding desktop is. This is affectionate satire of Bay Area builder culture.
+  return `You score LARPmaxxing: how hard a vibe coder is performing the role of an elite AI engineer through visible tooling, session count, and unnecessary workflow complexity. This is sharp, affectionate satire of internet builder culture.
 
 Rubric:
 ${rubric}
 
+Calibration anchors (the total component scores must land near these ranges):
+- 0-25: ordinary desktop, browser, or editor with no visible AI coding workflow.
+- 40-55: one visible Codex, Claude Code, Cursor, OMP, or similar agent session alongside a normal editor/terminal. One agent is baseline now, not elite LARPing.
+- 60-74: two concurrent agent sessions, or one agent inside a visibly elaborate multi-pane workflow with several supporting tools and logs.
+- 75-89: three or four distinct active agent/CLI sessions, multiple AI products, redundant terminals, orchestration, or monitoring layers.
+- 90-100: overwhelming visible proof of four-plus simultaneous agents or CLIs, redundant stacks, background agent work, dashboards, and a setup that appears to require management. Reserve this range for truly ridiculous screenshots.
+
 Rules:
 - Judge only visible evidence. Do not infer sensitive personal traits, identity, wealth, employer, location, or private information.
 - Do not repeat secrets, API keys, email addresses, message contents, file paths, or other personal text visible in the screenshot.
-- A busy, redundant, ceremonial workflow scores high. A clean practical desktop scores low.
-- Make the roast sharp but playful, in 1-2 sentences. No insults about the person; roast the setup.
+- Count distinct visible sessions and tools carefully. A sidebar item, tab label, or icon alone does not prove an active session.
+- Do not award a huge score for screen size, wallpaper, dark mode, or one busy terminal. Redundancy and concurrent agent work matter most.
+- Make the roast dry, specific, current, and a little mean in 1-2 short sentences. Roast what is visibly happening, not the person's identity.
+- Avoid faux-legal or sci-fi auditor language and stale phrases such as "probable cause," "operational theater," "achieving sentience," "ceremonial complexity," or "the workflow became the product."
+- Write like someone who actually knows Codex, Claude Code, OMP, Cursor, MCP, tmux, and vibe-coding culture. Do not force slang.
 - evidence must contain 3-7 short, non-sensitive visual observations.
-- modelVerdict is one short sentence.
+- modelVerdict is one blunt sentence that explains the score in plain language.
 - Return only JSON matching the provided schema.`;
 }
 
@@ -156,11 +166,11 @@ function demoAssessment(imageData, imageMeta = {}) {
 
   return normalizeAssessment({
     breakdown: Object.fromEntries(RUBRIC.map((item, index) => [item.key, values[index]])),
-    roast: "The simulator has reviewed the pixels and found probable cause: this desktop looks one orchestration layer away from achieving sentience.",
+    roast: "This is the demo score, so the pixels are getting away with a lot. Add the live key before posting your alleged aura.",
     evidence: [
-      imageMeta.width && imageMeta.height ? `${imageMeta.width}×${imageMeta.height} pixels of operational theater` : "A suspicious volume of desktop pixels",
-      wideBonus ? "Cinematically wide command surface" : "Conventional display geometry, unconventional intent",
-      "Screenshot submitted voluntarily as evidence"
+      imageMeta.width && imageMeta.height ? `${imageMeta.width}×${imageMeta.height} desktop capture` : "Desktop capture received",
+      wideBonus ? "Ultrawide layout bonus applied" : "Standard display geometry",
+      "No live visual inspection in demo mode"
     ],
     modelVerdict: "Demo score only—add an OpenRouter key for an actual visual audit."
   });
