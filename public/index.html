@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Drop your vibe-coding desktop and find out how hard you are LARPing." />
-    <meta name="theme-color" content="#f4f7f1" />
+    <meta name="theme-color" content="#0d1018" />
     <title>LARPmaxxing — A Dino's Essentials experiment</title>
     <link rel="stylesheet" href="/styles.css" />
     <script src="/app.js" defer></script>
@@ -27,30 +27,49 @@
     <main>
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="kicker">Dino's Essentials / terminal behavior</p>
+          <p class="kicker">Dino's Essentials / LARP index</p>
           <h1 id="hero-title">Show us the stack.<br /><em>We’ll tell you how cooked you are.</em></h1>
           <p class="hero-deck">
             Drop a screenshot of your vibe-coding setup. We count the agents, terminals, dashboards,
             and supporting cast—then score how committed you are to the bit.
           </p>
-          <a class="primary-link" href="#audit-card">Rate my desktop <span>↓</span></a>
+          <a class="primary-link" href="#audit-card">Scan my stack <span>↓</span></a>
         </div>
 
-        <div class="calibration-card" aria-label="Example score calibration">
-          <div class="calibration-head">
-            <div><p class="utility-label">Rough calibration</p><h2>What counts as LARP?</h2></div>
+        <div class="stack-visual" role="img" aria-label="Four overlapping coding agent sessions representing an extremely high LARPer score">
+          <div class="stack-chrome">
+            <div class="chrome-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span>vibe-stack.local</span>
+            <b>4 agents</b>
+          </div>
+          <div class="stack-stage">
+            <div class="agent-pane pane-back">
+              <header><span>OMP_04</span><b>BACKGROUND</b></header>
+              <p>Indexing the repo again</p>
+              <small>context: 88%</small>
+            </div>
+            <div class="agent-pane pane-mid">
+              <header><span>CLAUDE_03</span><b>REVIEWING</b></header>
+              <p>Reviewing the review</p>
+              <small>12 files · no notes</small>
+            </div>
+            <div class="agent-pane pane-side">
+              <header><span>CURSOR_02</span><b>WAITING</b></header>
+              <p>One tab, spiritually six</p>
+              <small>idle for 00:42</small>
+            </div>
+            <div class="agent-pane pane-front">
+              <header><span>CODEX_01</span><b>WORKING</b></header>
+              <p>Refactoring the refactor</p>
+              <small>tokens behaving normally</small>
+            </div>
             <img src="/dino-logo.png" alt="" />
           </div>
-          <div class="calibration-row">
-            <div><strong>One Codex window</strong><span>Baseline aura</span></div><b>≈ 50</b>
+          <div class="stack-readout">
+            <div><span>One agent</span><strong>≈ 50</strong></div>
+            <i aria-hidden="true"><b></b><b></b><b></b><b></b></i>
+            <div><span>Four agents</span><strong>≈ 90</strong></div>
           </div>
-          <div class="calibration-row">
-            <div><strong>Two agents + tmux</strong><span>Now we’re dressing up</span></div><b>≈ 68</b>
-          </div>
-          <div class="calibration-row calibration-row-hot">
-            <div><strong>Four CLIs + dashboards</strong><span>Committed to the bit</span></div><b>≈ 90</b>
-          </div>
-          <p class="calibration-note">Wallpaper cannot save you. Visible redundant work can.</p>
         </div>
       </section>
 
@@ -112,9 +131,8 @@
           </form>
 
           <section class="result" id="result" hidden aria-live="polite">
-            <div class="receipt-teeth" aria-hidden="true"></div>
             <div class="result-topline">
-              <div><p class="utility-label">Dino's Essentials</p><h2>Your LARP receipt</h2></div>
+              <div><p class="utility-label">LARPmaxxing / score output</p><h2>Your LARP profile</h2></div>
               <button class="text-button" id="reset-button" type="button">Rate another</button>
             </div>
 
@@ -166,8 +184,8 @@
 
       <section class="method" id="method" aria-labelledby="method-title">
         <div class="method-intro">
-          <p class="kicker">Scoring, minus the vibes</p>
-          <h2 id="method-title">What actually moves the number.</h2>
+          <p class="kicker">The LARP index</p>
+          <h2 id="method-title">Redundancy is the tell.</h2>
           <p>
             Redundant agents matter most. Hardware and a cute theme get a few points. Four terminals doing the job of one gets the respect it deserves.
           </p>

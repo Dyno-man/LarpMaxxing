@@ -1,6 +1,6 @@
 # LARPmaxxing
 
-A deliberately unserious desktop-vibe audit in the Dino's Essentials design system. Upload a screenshot of your coding setup, let a vision model count the visible agents and tooling, and receive a shareable LARPer score plus a spot on the leaderboard.
+A deliberately unserious desktop-vibe audit in the Dino's Essentials family, with its own dark agent-stack visual identity. Upload a screenshot of your coding setup, let a vision model count the visible agents and tooling, and receive a shareable LARPer score plus a spot on the leaderboard.
 
 The app is a small Node service with a no-build frontend. It uses OpenRouter for live image analysis and a JSON file for leaderboard persistence, which makes it easy to run on a single VPS.
 
