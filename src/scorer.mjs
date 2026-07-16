@@ -172,6 +172,6 @@ function demoAssessment(imageData, imageMeta = {}) {
       wideBonus ? "Ultrawide layout bonus applied" : "Standard display geometry",
       "No live visual inspection in demo mode"
     ],
-    modelVerdict: "Demo score only—add an OpenRouter key for an actual visual audit."
+    modelVerdict: "Demo score only — add an OpenRouter key for an actual visual audit."
   });
 }

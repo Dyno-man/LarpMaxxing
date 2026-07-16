@@ -13,7 +13,7 @@ The app is a small Node service with a no-build frontend. It uses OpenRouter for
 - Demo scores stay off the public leaderboard
 - Public leaderboard with optional X profile links
 - Native share and X intent actions
-- No screenshot persistence—the image exists in memory for the request only
+- No screenshot persistence — the image exists in memory for the request only
 - Rate limiting, security headers, input validation, and a plain-English privacy note
 - Docker Compose and Caddy examples for VPS deployment
 
