@@ -45,11 +45,10 @@ export class LeaderboardStore {
     this.writeQueue = this.writeQueue.catch(() => {}).then(async () => {
       const entries = await this.#read();
       entries.push(entry);
-      const trimmed = entries
-        .sort((a, b) => b.score - a.score || new Date(a.createdAt) - new Date(b.createdAt))
-        .slice(0, 500);
+      const ranked = entries
+        .sort((a, b) => b.score - a.score || new Date(a.createdAt) - new Date(b.createdAt));
       const temporaryFile = `${this.file}.${process.pid}.tmp`;
-      await fs.writeFile(temporaryFile, `${JSON.stringify(trimmed, null, 2)}\n`, "utf8");
+      await fs.writeFile(temporaryFile, `${JSON.stringify(ranked, null, 2)}\n`, "utf8");
       await fs.rename(temporaryFile, this.file);
     });
 

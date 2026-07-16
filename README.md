@@ -8,6 +8,7 @@ The app is a small Node service with a no-build frontend. It uses OpenRouter for
 
 - Drag-and-drop PNG, JPEG, and WebP uploads up to 6 MB
 - A structured 100-point LARPer metric with six categories
+- A dedicated public leaderboard with a highlighted top three and fuzzy name/handle lookup
 - Vision scoring through `openrouter/free` by default
 - Explicitly labeled deterministic demo mode when no API key is present
 - Demo scores stay off the public leaderboard

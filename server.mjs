@@ -54,7 +54,9 @@ app.get("/api/config", (_request, response) => {
 });
 
 app.get("/api/leaderboard", async (request, response) => {
-  const limit = Math.min(50, Math.max(1, Number(request.query.limit) || 25));
+  const limit = request.query.limit === "all"
+    ? Number.MAX_SAFE_INTEGER
+    : Math.min(500, Math.max(1, Number(request.query.limit) || 25));
   response.json({ entries: await store.list(limit) });
 });
 

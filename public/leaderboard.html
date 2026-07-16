@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="See who is most visibly committed to the vibe-coding bit on the LARPmaxxing leaderboard." />
+    <meta name="theme-color" content="#0d1018" />
+    <title>Leaderboard — LARPmaxxing</title>
+    <link rel="stylesheet" href="/styles.css?v=4" />
+    <script src="/leaderboard.js?v=1" defer></script>
+  </head>
+  <body class="leaderboard-page">
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="LARPmaxxing home">
+        <img src="/dino-logo.png" alt="" />
+        <span><strong>Dino's Essentials</strong><small>LARPmaxxing</small></span>
+      </a>
+      <div class="header-actions">
+        <span class="live-chip">Live damage</span>
+        <a class="header-link" href="/">Scan a stack</a>
+      </div>
+    </header>
+
+    <main class="leaderboard-shell">
+      <section class="leaderboard-hero" aria-labelledby="leaderboard-page-title">
+        <div>
+          <p class="kicker">Public damage report</p>
+          <h1 id="leaderboard-page-title">The most <em>operationally performative.</em></h1>
+        </div>
+        <p>
+          Every published audit, ranked by visible commitment to the bit. Find your handle, confirm your placement, and behave normally about it.
+        </p>
+      </section>
+
+      <section class="podium-section" aria-labelledby="podium-title">
+        <div class="section-heading">
+          <div>
+            <p class="utility-label">Maximum orchestration</p>
+            <h2 id="podium-title">The terminal three</h2>
+          </div>
+          <span class="field-count" id="entry-count">Counting the damage…</span>
+        </div>
+        <ol class="podium-grid" id="podium-grid" aria-live="polite">
+          <li class="podium-loading">Consulting the org chart…</li>
+        </ol>
+      </section>
+
+      <section class="full-field" aria-labelledby="full-field-title">
+        <div class="field-toolbar">
+          <div>
+            <p class="utility-label">Full public field</p>
+            <h2 id="full-field-title">Find your place in the incident</h2>
+          </div>
+          <div class="leaderboard-search">
+            <label class="visually-hidden" for="leaderboard-search">Find a name or X handle</label>
+            <span class="search-glyph" aria-hidden="true">⌕</span>
+            <input id="leaderboard-search" type="search" autocomplete="off" aria-describedby="search-status" placeholder="Find a name or @handle" />
+            <button id="clear-search" type="button" hidden>Clear</button>
+          </div>
+        </div>
+
+        <p class="search-status" id="search-status" aria-live="polite"></p>
+        <div class="ranking-labels" aria-hidden="true">
+          <span>Rank / operator</span><span>Diagnosis</span><span>Score</span>
+        </div>
+        <ol class="full-ranking" id="full-ranking" aria-live="polite">
+          <li class="ranking-empty">Loading every known LARPer…</li>
+        </ol>
+      </section>
+
+      <a class="audit-button leaderboard-cta" href="/">
+        <span>Submit your own evidence</span><b aria-hidden="true">→</b>
+      </a>
+    </main>
+
+    <footer>
+      <a class="footer-brand" href="/"><img src="/dino-logo.png" alt="" /><span>Dino's Essentials</span></a>
+      <p>LARPmaxxing measures visible commitment to the bit, not engineering ability · <span id="year"></span></p>
+    </footer>
+  </body>
+</html>
