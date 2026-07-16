@@ -32,7 +32,9 @@ app.use(helmet({
   crossOriginResourcePolicy: { policy: "same-origin" }
 }));
 app.use(express.json({ limit: "9mb" }));
-app.use(express.static(path.join(root, "public"), { extensions: ["html"], maxAge: "1h" }));
+// Keep local runs fresh so a CSS/JS change is visible without fighting a stale
+// browser cache. Production deploys can add immutable asset versioning later.
+app.use(express.static(path.join(root, "public"), { extensions: ["html"], maxAge: 0 }));
 
 const scoringLimiter = rateLimit({
   windowMs: 60_000,
